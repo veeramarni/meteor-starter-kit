@@ -8,8 +8,6 @@ import makeRootReducer from './reducers';
 
 
 
-const networkInterface = createNetworkInterface('/graphql');
-
 export const apolloClient = new ApolloClient({
     meteorClientConfig
 });

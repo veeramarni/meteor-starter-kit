@@ -1,5 +1,5 @@
 import { Route, Router, browserHistory } from 'react-router';
-import App from '/imports/ui/App';
+import App from 'TodoApp/imports/ui/App';
 
 export default (
 

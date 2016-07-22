@@ -1,0 +1,4 @@
+{
+    "presets": ["es2015", "react", "meteor", "stage-0"],
+    "plugins": []
+}
