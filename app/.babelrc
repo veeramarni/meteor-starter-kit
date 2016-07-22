@@ -1,4 +1,4 @@
 {
-    "presets": ["es2015", "react", "meteor", "stage-0"],
-    "plugins": []
+    "presets": ["es2015", "react",  "meteor"],
+    "plugins": ["transform-runtime"]
 }

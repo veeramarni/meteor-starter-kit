@@ -1,4 +1,9 @@
 import { Random } from 'meteor/random';
+//import { async, await } from 'meteor/meteor-promise';
+
+//import regeneratorRuntime from 'babel-runtime/regenerator'
+//if (!Object.keys(window).includes('regeneratorRuntime'))
+//  window.regeneratorRuntime = regeneratorRuntime
 
 export const schema = [`
 type Email {
