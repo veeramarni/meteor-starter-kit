@@ -1,31 +1,25 @@
-import { applyMiddleware, createStore, compose } from 'redux';
-import { routerMiddleware } from 'react-router-redux';
+import { applyMiddleware, createStore, compose, combineReducers } from 'redux';
+import { routerMiddleware, routerReducer, syncHistoryWithStore } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
-import ApolloClient from 'apollo-client';
-import { meteorClientConfig } from 'meteor/apollo';
 import makeRootReducer from './reducers';
 
 
 
-export const apolloClient = new ApolloClient({
-    meteorClientConfig
-});
-
-
 export default (initialState = {}, history) => {
+
+
     // ======================================================
     // Middleware Configuration
     // ======================================================
-    const middleware = [thunk, routerMiddleware(history), apolloClient.middleware()];
+    const middleware = [thunk, routerMiddleware(history)];
 
     // ======================================================
     // Store Enhancers
     // ======================================================
-    const enhancers = []
-    if (process.env.NODE_ENV !== 'production') {
-        //middleware.push(createLogger());
-        const devToolsExtension = window.devToolsExtension
+    const enhancers = [];
+    if (process.env.NODE_ENV !== 'production' && window.devToolsExtension) {
+        const devToolsExtension = window.devToolsExtension;
         if (typeof devToolsExtension === 'function') {
             enhancers.push(devToolsExtension())
         }
@@ -35,7 +29,7 @@ export default (initialState = {}, history) => {
     // Store Instantiation and HMR Setup
     // ======================================================
     const store = createStore(
-        makeRootReducer({apollo: apolloClient.reducer()}),
+        makeRootReducer({routing: routerReducer}),
         initialState,
         compose(
             applyMiddleware(...middleware),
@@ -44,7 +38,7 @@ export default (initialState = {}, history) => {
     );
     store.asyncReducers = {};
 
-    if (module.hot){
+        if (module.hot){
 
         module.hot.accept('./reducers', () => {
             console.log("Hot module is available ");

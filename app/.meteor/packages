@@ -20,9 +20,11 @@ std:accounts-ui
 std:accounts-basic
 accounts-password
 react-meteor-data
-apollo
 webpack:webpack
 webpack:react
 webpack:assets
 reactrouter:react-router-ssr
 webpack:sass
+thereactivestack:blazetoreact
+aldeed:simple-schema
+aldeed:collection2

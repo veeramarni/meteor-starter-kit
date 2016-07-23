@@ -1,1 +1,2 @@
-regeneratorRuntime = require("babel-runtime/regenerator");
+import './publish/publications';
+import 'TodoApp/methods/methods';
